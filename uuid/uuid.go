@@ -6,6 +6,7 @@
 package uuid
 
 import (
+	"errors"
 	"database/sql/driver"
 	"fmt"
 
@@ -20,7 +21,7 @@ func FromString(input string) (UUID, error) {
 
 // NewV4 Wrapper over the real NewV4 method
 func NewV4() UUID {
-	return UUID(uuid.Must(uuid.NewV4()))
+	return UUID(uuid.Must(uuid.NewV4(), errors.New("UUID Error")))
 }
 
 // String Wrapper over the real String method
